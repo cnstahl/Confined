@@ -69,7 +69,7 @@ For example, consider the 2d toric code. If the dynamics are restricted to state
 The R\&B proposal \cite{RobertsBartlett} instead creates a code that, when the symmetry is enforced, behaves like the 4d toric code in that logical operators can be applied transversally but with a large enough energy barrier that the bath applies them with probability 0 in the thermodynamic limit, at sufficiently low but non-zero temperature. This is achieved using a 2d topological order on the boundary of a 3d SPT. 
 	
 In this paper we show how to achieve the same results using the 3d 3-fermion model~\cite{BurnellSoluble}, a specific example of a confined Walker-Wang model. We expect that this prescription should work for any confined Walker-Wang model~\cite{WalkerWang, vonKeyserlingkSurfaceAnyons}. We show that the relevant symmetry need only be enforced ``close" to the boundary, in a sense that we will explain. The boundary between the symmetry-protected region and the unprotected region is trivial and gapped, suggesting that the SPT nature of the bulk may be inessential to the phenomenon. 
-We then show that a model with a trivial paramagnetic bulk can display the same phenomena. The 1-form symmetry directly protects the quantum memory by introducing an appropriate coupling between pointlike excitations on the boundary and confined fluxes in the bulk. 
+We then show that a model with a trivial paramagnetic bulk can display the same phenomena, albeit with a 1-form symmetry that is not ``on-site"~\cite{WenHigher}. The symmetry directly protects the quantum memory by introducing an appropriate coupling between pointlike excitations on the boundary and confined fluxes in the bulk. 
 
 We should mention that we do not consider \emph{universal} quantum computation (UQC). In particular we only show that Pauli $X$ and $Z$ operators can be performed transversally in both of our models. Recent work has investigated UQC in the 3d 3-fermion model~\cite{Roberts2020}. 
 While the 4d toric code cannot perform UQC, it is known that self-correcting UQC is possible in seven space dimensions~\cite{Bombin2013}.
@@ -266,8 +266,8 @@ As long as we ensure that $W$ grows without bound as we take the thermodynamic l
 
 Note that this means that $W$ need not scale as any particular function of $L$. We could take the thermodynamic limit in such a way that $W/L\to 0$ as long as both grow without bound, for example by taking $W\sim \log L$. Then the symmetry would be enforced in a measure zero sub-volume in the thermodynamic limit. In this sense the quantum memory only requires that the symmetry be enforced near the boundary, not in the whole bulk. 
 
-Furthermore, the boundary between the protected and unprotected regions is uninteresting. There is no topological order there, and there are no protected gapless modes.
-This is our first signal that we are not relying on the existence of an SPT phase.
+Furthermore, the boundary between the protected and unprotected regions is uninteresting. There is no topological order there, and there are no protected gapless modes. In addition, it is possible to terminate the lattice in such a way that even if we enforce the symmetry in the whole lattice, there may be boundaries that are gapped and trivial. 
+This is our first signal that we are not relying on the existence of an SPT phase. 
 
 We could have let the two non-contractible directions have lengths $L_1$ and $L_2$ and not required $L_1, L_2>W$. In that case the energy barrier scales as $\Delta\sim \min\{L_1,L_2,W\}$, reproducing the above scaling when $W>L_1,L_2$. 
 This scaling is reminiscent of the behavior in Ref.~\cite{RobertsBartlett}. If the vertical direction is smaller than $W$, then it is more energy efficient to first make the loop very large in the vertical direction until it split into a nontrivial boundary loop and a nontrivial bulk loop, as in Fig.~12 of~\cite{RobertsBartlett}. The bulk loop can then be moved to the unprotected region, broken, and removed.
@@ -307,7 +307,7 @@ where $A_f^\partial$ and $B_f^\partial$ are the normal 2d toric code terms, acti
 
 The symmetry operators in the bulk are simply 
 \begin{align}
-A_v &= \prod_{e\in\pardag v} X_e,\qquad A_c = \prod_{f\in \partial c}X_f,
+A_v &= \prod_{e\in\pardag v} X_e,\qquad A_q = \prod_{f\in \partial q}X_f,
 \end{align}
 with one operator for each vertex and each cube. These clearly commute with the bulk Hamiltonian. We will give explicit definitions of the boundary symmetry operators but they are rather complicated so they are depicted  in Fig.~\ref{fig:trivbdy}.
 
@@ -328,6 +328,8 @@ For any cube whose boundary contains a boundary face, the symmetry operator is
 A_q' = \prod_{e\in \partial f^{(0)}}Z_e\prod_{f\in \partial q}X_f,\label{eqn:bdyAq}
 \end{align}
 where $f^{(0)}$ is the unique face in $\partial q$ on the boundary lattice. Recall the boundary faces have no qubits on them so $A'_q$ contains 5 $X$-type operators. In addition, it is dressed by a 4-body $Z$-type term on boundary qubits. See Fig.~\ref{fig:trivbdy} for illustrations.
+
+The symmetry operators in Eqn.~\ref{eqn:bdyAq} are not ``on-site" in the sense of Ref.~\cite{WenHigher}. Similarly, the symmetry operators are not simply truncated versions of the bulk symmetry operators, and instead have a $Z$-type decoration. This is in contrast to the symmetries in the 3d 3-fermion model above and in the R\&B proposal, which are on-site.
 
 The group generated by $A_q$, $A_v$, $A_q'$, and $A_v'$ is a 1-form symmetry because elements of the group act on codimension-1 objects. Elements generated by $A_v$ and $A_v'$ consist of $X$ operators on sets of edges forming dual membranes. These dual membranes may terminate at the lattice boundary.
 Elements generated by $A_q$ and $A_q'$ consist of $X$ operators acting on sets of faces forming direct membranes. A membrane $\cal{M}$ may terminate at the lattice boundary if it is decorated by $Z$ operators on the edges that make up $\partial\cal{M}$. This decoration comes from the decoration in Eqn.~\ref{eqn:bdyAq}.
@@ -350,11 +352,12 @@ We find ourselves in a position similar to the 3d 3-fermion model, where boundar
 
 \section{Discussion}
 
-The  purpose of this paper have been to relate the R\&B construction to other existing models and to determine what aspects of the construction are most important for achieving self-correction. We showed that enforcing the 1-form symmetry in any confined abelian Walker-Wang model results in self-correction. Ref.~\cite{RobertsBartlett} conjectured that this might be possible, and indeed it is. In the process we discovered that it suffices to enforce the symmetry in a measure zero sub-volume of the system. This then led us to conjecture that it might be possible to achieve self correction with a paramagnetic bulk, and indeed, we were able to demonstrate this by explicit construction. 
+The  purpose of this paper have been to relate the R\&B construction to other existing models and to determine what aspects of the construction are most important for achieving self-correction. We showed that enforcing the 1-form symmetry in any confined abelian Walker-Wang model results in self-correction. Ref.~\cite{RobertsBartlett} conjectured that this might be possible, and indeed it is. In the process we discovered that it suffices to enforce the symmetry in a measure zero sub-volume of the system, and that the boundary of the enforced region need not be anomalous. This then led us to conjecture that it might be possible to achieve self correction with a paramagnetic bulk, and indeed, we were able to demonstrate this by explicit construction. 
 
 Thus, while the boundary topological order is indeed `protected' by the symmetry, the bulk is not in any SPT-ordered phase. 
-This strongly suggests that it is the 1-form symmetry that does the heavy lifting, and any `exotic' nature of the bulk is optional. 
-We leave open the question of what exactly constitutes a 1-form SPT phase. Since 1-form symmetries are more varied than 0-form symmetries, it is possible the the definition of 1-form SPT order might be more restricted or more expansive than the familiar 0-form case.
+This strongly suggests that it is the 1-form symmetry that does the heavy lifting, and any `exotic' nature of the bulk is optional.
+
+We leave open the question of what exactly constitutes a 1-form SPT phase. Since 1-form symmetries are more varied than 0-form symmetries, it is possible the the definition of 1-form SPT order might be more restricted or more expansive than the familiar 0-form case. The strongest evidence that the current class of symmetry-protected self-correcting memories are not SPT phases comes from their possession of ``uninteresting" boundaries. However, there may still be some subtle manner in which the boundaries of higher-form SPT phases may differ from the usual case.
 
 The approaches we have discussed achieve self-correction by giving anyons effective long-range interactions, by tying them to confined bulk flux strings. Thus they could be compared to earlier literature that also tried to utilize long-range interactions to achieve self correction ~\cite{Hamma2009, Chesi2010, Pedrocchi2011, Hutter2012, Wootton2013, Becker2013, Pedrocchi2013, Hutter2014}.
 Those attempts were limited by requirements for unbounded operator strength and/or instability to perturbation~\cite{LandonCardinal2015, Brown2016}. If we enforce the 1-form symmetry by endowing certain terms in the Hamiltonian with infinite coupling constants, then the R\&B proposal (and our extensions thereof) suffer from the same limitations. 
